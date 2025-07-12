@@ -1,75 +1,87 @@
-import java.util.Arrays;
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
 import java.io.IOException;
+import java.util.Arrays;
 
-public class problemC {
+public class ProblemC {
     public static void main(String[] args) throws IOException {
-        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 
-        
-        String[] str1 = br.readLine().split(" ");
+        BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
+        String str1[]= reader.readLine().split(" ");
+        String str2[]= reader.readLine().split(" ");
 
-        
-        String[] str2 = br.readLine().split(" ");
-
-        
-
-        int numbers=Integer.parseInt(str1[0]);
+        int elements=Integer.parseInt(str1[0]);
         int target=Integer.parseInt(str1[1]);
-        Integer[] arr =new Integer[numbers];
-        Integer[] clonedArray= new Integer[numbers];
-
-        for(int i=0 ; i< numbers ;i++ ){
-            arr[i]=Integer.parseInt( str2[i] );
-            clonedArray[i]=arr[i];
+        int[] nums= new int[elements];
+        for(int i=0;i<elements;i++){
+            nums[i]=Integer.parseInt(str2[i]);
         }
 
-       
-        Arrays.sort(clonedArray);
+        Node[] nodes= new Node[elements];
 
-        boolean found=false;
+        for(int i=0; i<elements ;i++){
+            nodes[i]= new Node(nums[i] , i);
+        }
+
+        Arrays.sort(nums);
         Integer a=0,b=0,c=0;
 
-        for(int i=0; i<numbers-1 && !found ;i++){
-            int num= arr[i];
-            int l=i+1;
-            int r=clonedArray.length-1;
-            while (l<r) {
-                int sum=num+ clonedArray[l] + clonedArray[r];
+        boolean found=false;
 
-                if((sum) == target){
+        for(int i=0;i<elements ;i++){
+            a=nums[i];
+
+            int left=i+1;
+            int right=elements-1;
+
+            while (left<right && !found){
+                int sum= nums[left] + nums[right] + a;
+
+                if(sum==target){
+                    b=nums[left];c=nums[right];
                     found=true;
-                    a=num; b=clonedArray[l] ; c=clonedArray[r];
-                    break; 
                 }
-                if(sum< target){
-                    l++;
+                if(sum<target){
+                    left++;
+                }else {
+                    right--;
                 }
-                else{
-                    r--;
-                }
+
+            }
+            if(found){
+                break;
             }
         }
-
         if(found){
-            for(int i=0;i<numbers;i++){
-                if(arr[i].equals(a)){
-                    System.out.print(i+1+" ");
+            for(int i=0;i<elements;i++){
+                if(nodes[i].data.equals(a)){
+                    System.out.print(nodes[i].index+1 +" ");
                     a=null;
                 }
-                else if(arr[i].equals(b)){
-                    System.out.print(i+1+" ");
+                else if(nodes[i].data.equals(b)){
+                    System.out.print(nodes[i].index+1 +" ");
                     b=null;
                 }
-                else if(arr[i].equals(c)){
-                    System.out.print(i+1+" ");
+                else if(nodes[i].data.equals(c)){
+                    System.out.print(nodes[i].index+1 +" ");
                     c=null;
                 }
             }
         }
-        else{
+        else {
             System.out.println(-1);
+        }
+
+
+    }
+
+    private static class Node{
+        Integer data;
+        Integer index;
+
+        Node(Integer data, Integer index){
+            this.data=data;
+            this.index=index;
         }
     }
 }
