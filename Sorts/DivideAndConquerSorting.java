@@ -2,12 +2,13 @@ import java.util.Arrays;
 
 public class DivideAndConquerSorting {
     public static void main(String[] args) {
-        int[] test1={5,4,3,2,1,-1,-2};
+        int[] test1={4, 2, 4, 1, 3};
 
-        mergeSort(test1);
+        quickSort(test1);
 
         System.out.println("Merge Sorted: " + Arrays.toString(test1));
     }
+
 
     static void mergeSort(int[] arr){
         int length= arr.length;
@@ -70,6 +71,41 @@ public class DivideAndConquerSorting {
         }
     }
 
+    static void quickSort(int[] arr){
+        quickSortHelper(arr, 0, arr.length-1);
+    }
+    static void quickSortHelper(int[] arr , int low, int high){
+        if(low<high){
+            int pivotIndex=partition(low, high, arr);
+            quickSortHelper(arr,low, pivotIndex-1);    
+            quickSortHelper(arr,pivotIndex+1,high);
+        }
+    }
 
+    static int partition (int low, int high, int[] arr){
+        int pivot = arr[high];
+
+        int l=low-1;
+        for(int i=low ; i< high ; i++){
+            if(arr[i] < pivot) {
+                l++;
+                if(arr[l] > arr[i]){
+                    swap(arr, i, l);
+                }
+            }
+        }
+
+        swap(arr, l + 1, high);
+
+        return l+1;
+
+
+    }
+
+    static void swap(int[] arr , int indexA, int indexB ){
+        int temp=arr[indexA];
+        arr[indexA]=arr[indexB];
+        arr[indexB]=temp;
+    }
 
 }
