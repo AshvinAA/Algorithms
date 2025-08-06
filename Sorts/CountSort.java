@@ -4,9 +4,6 @@ public class CountSort{
     public static void main(String[] args){
         int[] arr={5,4,2,1,2};
         System.out.println(Arrays.toString(CountSort(arr)));
-
-
-
     }
     static int[] CountSort(int[] arr){
         int min=findMin(arr);

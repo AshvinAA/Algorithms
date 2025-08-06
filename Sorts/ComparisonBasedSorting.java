@@ -2,14 +2,7 @@ import java.util.Arrays;
 
 public class ComparisonBasedSorting{
     public static void main(String[] args) {
-        c
-
-        System.out.println("BubbleSorted: "+ Arrays.toString(bubbleSort(arr)));
-
-        System.out.println("SelectionSorted: "+ Arrays.toString(selectionSort(arr)));
-
-        System.out.println("InsertionSorted: "+ Arrays.toString(insertionSort(arr)));
-
+        
 
 
     }
