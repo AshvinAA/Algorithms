@@ -3,6 +3,7 @@
 public class AdjacencyListGraph {
 
     public static void main(String[] args) {
+        System.out.println("something");
         AdjacencyListGraph g = new AdjacencyListGraph();
         g.insertVertex(1);
         g.insertVertex(2);

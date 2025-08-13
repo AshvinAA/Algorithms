@@ -6,6 +6,7 @@ import java.io.IOException;
 public class problemB {
     public static void main(String[] args) throws IOException {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+        System.out.println("helo");
 
         
         String[] str=br.readLine().split(" ");
@@ -14,7 +15,7 @@ public class problemB {
 
         int[][] matrix = new int[nodes][nodes];
 
-        for(int i=0 ; i<n ;  i++){
+        for(int i=0 ; i<n ; i++){
 
             String[] input=br.readLine().split(" ");
 
@@ -23,6 +24,7 @@ public class problemB {
             int weight=Integer.parseInt(input[2]);
 
             matrix[node-1][edge-1]=weight;
+            
         
         }
 
