@@ -8,7 +8,7 @@ def swap(arr , x , y):
     temp = arr[x]
     arr[x]=arr[y]
     arr[y]=temp
-    
+
 
 def parity_check(x,y):
     if ((x%2==0 and y%2==0) or (x%2!=0 and y%2!=0)):
@@ -18,14 +18,13 @@ def parity_check(x,y):
 
 
 for i in range (len(arr)):
-
-    for j in range (i+1,len(arr),1):
+    for j in range (0,len(arr)-1-i):
         
-        if(arr[j] < arr[j-1]):                
-            if(parity_check(arr[j] , arr[j-1])):
-                swap(arr , j , j-1 )
+        if(arr[j] > arr[j+1]):                
+            if(parity_check(arr[j] , arr[j+1])):
+                swap(arr , j , j+1 )
             
-print(arr)       
+   
 
 for num in arr:
     print(num, end=" ")

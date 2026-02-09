@@ -16,6 +16,20 @@ def sorted_check(arr):
 num= sys.stdin.readline()
 arr = list(map(int, sys.stdin.readline().split()))
 
+def sort(array):
+    swapped=[]
+    swap_count=0
+    for i in range (len(array)):
+        minIndex=i
+        for j in range(i+1 , len(array)):
+            if(array[j] < array[minIndex]):
+                minIndex=j
+                
+        if(minIndex!=i):
+            swapped.append([i+1 , minIndex + 1])
+            swap_count+=1
+            swap(array, minIndex , i )            
+    return swapped,swap_count
 
 
 def reverseSorting():
@@ -27,32 +41,30 @@ def reverseSorting():
             evenList.append(arr[i])
         else:
             oddList.append(arr[i])
-
-
-def reverseSorting():
-    while True:
-        swap_count=0       
-        swapped_index=[]
-        for i in range(0 , len(arr)-2 , 1):
-            swap=False
-            if(arr[i] > arr[i+2]):
-                swap(arr,i,i+2)
-                swap_count+=1
-                swapped_index.append([i+1 , i+3])
-                swap=True
-        if(sorted_check(arr)):
-            print("YES")
-            print(swap_count)
-            print(swapped_index)
-            return
+    
+    evenSortedArray,evenSortedCount= sort(evenList)
+    oddSortedArray,oddSortedCount= sort(oddList)
+    
+    newList=[]
+    evenIndex=0
+    oddIndex=0
+    
+    for i in range (len(arr)):
+        if (i%2==0):
+            newList.append(evenList[evenIndex])
+            evenIndex+=1
         else:
-            if(swap == False):
-                print("NO")
-                return
-            else:
-                swapped_index=[]
-                swap_count=0
-        
+            newList.append(oddList[oddIndex])
+            oddIndex+=1
+            
+    if(sorted_check(newList)):
+        print("YES")
+        print(evenSortedCount + oddSortedCount)
+        print(evenSortedArray)
+        print(oddSortedArray)
+    else:
+        print("NO")
+
         
 if(len(arr)<=2):
     if(sorted_check(arr)):
