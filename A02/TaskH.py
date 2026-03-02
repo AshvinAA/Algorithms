@@ -1,3 +1,5 @@
+#Searching is Fun
+
 import sys
 
 input = int(sys.stdin.readline())
