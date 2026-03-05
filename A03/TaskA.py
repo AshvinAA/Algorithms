@@ -1,13 +1,14 @@
 import sys
-#INCOMPLETE
+#Count the Inversion
 
 s = sys.stdin.readline()
 nums = list(map(int , sys.stdin.readline().split()))
 
-def merge(left_arr,right_arr,arr[]):
+def merge(left_arr,right_arr):
     l=0
     r=0
     inversionCount=0
+    arr=[]
 
     while(l<len(left_arr) and r<len(right_arr)):
         if(left_arr[l] < right_arr[r]):
@@ -16,7 +17,7 @@ def merge(left_arr,right_arr,arr[]):
         else:
             arr.append(right_arr[r])
             r+=1
-            inversionCount+=1
+            inversionCount += (len(left_arr) - l)
 
     while(l<len(left_arr)):
         arr.append(left_arr[l])
@@ -26,29 +27,25 @@ def merge(left_arr,right_arr,arr[]):
         arr.append(right_arr[r])
         r+=1
 
-    return inversionCount
+    return arr,inversionCount
         
 def mergeSort(arr):
     if(len(arr) <=1):
-        return arr
+        return arr,0
+    mid= len(arr)//2
+
+    leftArr = arr[:mid]   
+    rightArr = arr[mid:]
+
     
-    leftArr=[]
-    rightArr=[]
+    l,n=mergeSort(leftArr)
+    r,k=mergeSort(rightArr)
+    merged_arr, iCount = merge(l, r)
+    total_inversions = n + k + iCount
 
-    x=0
+    return merged_arr, total_inversions
 
-    for num in arr:
-        if(x< len(arr)/2):
-            leftArr.append(num)
-            x+=1
-        else:
-            rightArr.append(num)
-    inversionCounts=0
-    arr=[]
-    l=mergeSort(leftArr)
-    r=mergeSort(rightArr)
-    inversionCounts+=merge(l,r,arr)
-    return inversionCounts
-
-print(mergeSort(nums))
+arr,count=mergeSort(nums)
+print(count)
+print(*arr)
     
