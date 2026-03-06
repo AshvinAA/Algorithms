@@ -9,7 +9,7 @@ inputs=number[1]
 array = list(map(int,sys.stdin.readline().split()))
 
 
-
+#finding the minimum index 
 def leftIndex(arr , target):
     l=0
     r=len(arr)-1
@@ -26,7 +26,7 @@ def leftIndex(arr , target):
         
     return answer
     
-
+#finding the maximum index
 def rightIndex(arr , target):
     l=0
     r=len(arr)-1

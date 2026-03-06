@@ -1,5 +1,6 @@
+#COUNT THE INVERSION
+
 import sys
-#Count the Inversion
 
 s = sys.stdin.readline()
 nums = list(map(int , sys.stdin.readline().split()))

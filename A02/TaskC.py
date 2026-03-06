@@ -6,7 +6,7 @@ input = sys.stdin.readline
 n, x = map(int, input().split())
 a = list(map(int, input().split()))
 
-arr = [(a[i], i + 1) for i in range(n)]
+arr = [(a[i], i + 1) for i in range(n)] #tuple that holds the value and index 
 
 arr.sort()
 

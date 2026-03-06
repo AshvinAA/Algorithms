@@ -8,9 +8,9 @@ current_sum = 0
 left = 0
 
 for right in range(N):
-    current_sum += a[right]
+    current_sum += a[right] #stores the sum
     while current_sum > k:
-        current_sum -= a[left]
+        current_sum -= a[left]  #subtracts the amount if its greater than the projected value 
         left += 1
     max_len = max(max_len, right - left + 1)
 
