@@ -20,5 +20,14 @@ root = Node(element)
 left= inOrderTree[0:preOrderTree.index(element)]
 right= inOrderTree[preOrderTree.index(element):n-1]
 
-def treeBuilder(preStart,preEnd,inStart,inEnd,inOrderTree,preOrderTree,root):
-    pass 
+def treeBuilder(preStart,preEnd,inStart,inEnd,inOrderTree,preOrderTree,element):
+    if(inStart == inEnd):
+        return Node(preOrderTree[inStart])
+    
+    node=Node(preOrderTree[preStart])
+    
+    iSL=0
+    iEL=inOrderTree.index(element)-1
+    pSL=preOrderTree.index(element)+1
+    pEL=pSL+iEL+1
+    node.left=treeBuilder(pSL,pEL,iSL,iEL,inOrderTree,preOrderTree)
