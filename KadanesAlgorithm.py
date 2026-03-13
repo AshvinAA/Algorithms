@@ -8,9 +8,10 @@ def kadanes_algorithm(net_goal_difference):
     
 
     for i in range(1, len(net_goal_difference)):
+        
         num = net_goal_difference[i]
         
-       
+
         current_streak = max(num, current_streak + num)
         
         
