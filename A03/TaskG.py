@@ -1,8 +1,8 @@
 #220 Trees
 
 import sys
-from collections import deque
 
+sys.setrecursionlimit(2000)
 
 input,output= sys.stdin.readline , sys.stdout.write
 n = int(input())
@@ -15,7 +15,7 @@ def get_PostOrder(preOrder , inOrder):
     
     root_val=preOrder[0]
     
-    root_idx=preOrder.index(root_val)
+    root_idx=inOrder.index(root_val)
     
     #splitting InOrder array
     
@@ -37,4 +37,4 @@ def get_PostOrder(preOrder , inOrder):
     return left_post + right_post + [root_val]
     
 postOrderTree=get_PostOrder(preOrderTree,inOrderTree)
-print(*postOrderTree)
+sys.stdout.write(" ".join(map(str, postOrderTree)) + "\n")
