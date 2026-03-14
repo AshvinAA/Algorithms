@@ -13,13 +13,6 @@ n = int(input())
 inOrderTree = list(map(int, input().split()))
 preOrderTree = list(map(int, input().split()))
 
-
-element=preOrderTree[0]
-root = Node(element)
-
-left= inOrderTree[0:preOrderTree.index(element)]
-right= inOrderTree[preOrderTree.index(element):n-1]
-
 def treeBuilder(preStart,preEnd,inStart,inEnd,inOrderTree,preOrderTree,element):
     if(inStart == inEnd):
         return Node(preOrderTree[inStart])

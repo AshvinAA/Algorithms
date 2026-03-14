@@ -30,4 +30,3 @@ for i in range(n):
 
 output(out)
 
-    
