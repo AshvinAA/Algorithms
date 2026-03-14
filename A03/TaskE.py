@@ -1,32 +1,33 @@
-#FAST SERIES DRIFT
-import sys
+#FAST SERIES DRIFT  
 
+import sys
 input,output= sys.stdin.readline , sys.stdout.write
 
-def fast_power_drift(a,b,m):
-    if b==0:
-        return 1
-    if b==1:
-        return a%m
+def mod_pow_sum(a, n, m):
+    if n == 0:
+        return (1, 0)
+    if n == 1:
+        return (a % m, a % m)
     
-    half = fast_power_drift(a,b//2,m)
-    squared = (half * half)%m
-    
-    
-    if(b%2==1):
-        return (a*squared)%m
+    power, summation = 1, 0
+    res_pow, res_sum = 1, 0
+    base_pow, base_sum = a % m, a % m
+    while n > 0:
+        if n & 1:
+            res_sum = (res_sum * base_pow + base_sum) % m
+            res_pow = (res_pow * base_pow) % m
+        base_sum = (base_sum * (1 + base_pow)) % m
+        base_pow = (base_pow * base_pow) % m
+        n >>= 1
+    return (res_pow, res_sum)
+
+printer = []
+
+T = int(input())
+for _ in range(T):
+    a, n, m = map(int, input().split())
+    if a == 1:
+        output(str(n % m)+"\n")
     else:
-        return squared
-    
-n=int(input())
-out="1"
-for i in range(n):
-    a,b,m=map(int,input().split())
-    
-    sum = 0 
-    for i in range(1,n):
-        sum+=fast_power_drift(a,i,m)
-    out+=(str(sum%m)+"\n")
-
-output(out)
-
+        _, total = mod_pow_sum(a, n, m)
+        output(str(total % m)+"\n")

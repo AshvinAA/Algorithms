@@ -37,4 +37,4 @@ def get_PostOrder(preOrder , inOrder):
     return left_post + right_post + [root_val]
     
 postOrderTree=get_PostOrder(preOrderTree,inOrderTree)
-sys.stdout.write(" ".join(map(str, postOrderTree)) + "\n")
+output(" ".join(map(str, postOrderTree)) + "\n")

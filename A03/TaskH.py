@@ -38,4 +38,4 @@ def get_PreOrder(postOrder , inOrder):
     return [root_val] + left_post + right_post
     
 preOrderTree=get_PreOrder(postOrderTree,inOrderTree)
-sys.stdout.write(" ".join(map(str, preOrderTree)) + "\n")
+output(" ".join(map(str, preOrderTree)) + "\n")
