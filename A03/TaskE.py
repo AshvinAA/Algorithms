@@ -29,4 +29,5 @@ for i in range(n):
     out+=(str(sum%m)+"\n")
 
 output(out)
+
     
