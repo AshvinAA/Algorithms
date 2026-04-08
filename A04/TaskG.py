@@ -9,39 +9,45 @@ def validMove(x,y,r,c):
         return False
     return True
 
-turns=[]
+#storing the current knight positions
+positions = set()
 
-def conflict(x,y,r,c,turns):
-    available_moves=[(x-2,y+1),
-                     (x-1,y+2),
-                     (x+2,y+1),
-                     (x+1,y+2),
-                     (x-2,y-1),
-                     (x-1,y-2),
-                     (x+1,y-2),
-                     (x+2,y-1)
-                     ]
+for _ in range(numKnights):
+    x, y = map(int, input().split())
+    positions.add((x, y))
 
-    for move in available_moves:
-        if(validMove(move[0] , move[1] , r , c)):
-
-            if move in turns:
-                return True
+def conflict(positions):
+    for x,y in positions:
+        available_moves=[(x-2,y+1),
+                        (x-1,y+2),
+                        (x+2,y+1),
+                        (x+1,y+2),
+                        (x-2,y-1),
+                        (x-1,y-2),
+                        (x+1,y-2),
+                        (x+2,y-1)
+                        ]
+        #checking for all the valid moves for one position
+        for move in available_moves:
+            if(validMove(x,y,r,c)):
+                if move in positions:
+                    return True
     return False
 
-def conflict_checker(): 
-    turns=[]
-    for _ in range(numKnights):
-        x,y=map(int, input().split())
 
-        if(conflict(x,y,r,c,turns)==True):return True
 
-    return False
 
-result = conflict_checker()
+if(conflict(positions)==True):output("YES")
+else:output("NO")
 
-if(result == True):
-    output("NO")
+    
+
+    
+
+
+
+
+
 
         
 
