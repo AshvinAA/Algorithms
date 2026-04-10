@@ -1,3 +1,5 @@
+#EDGE DEGREE DIFFERENCE
+
 import sys 
 
 input,output= sys.stdin.readline , sys.stdout.write

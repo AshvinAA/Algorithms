@@ -1,3 +1,5 @@
+#ADJACENCY LIST TO MATRIX
+
 import sys 
 
 input,output= sys.stdin.readline , sys.stdout.write
