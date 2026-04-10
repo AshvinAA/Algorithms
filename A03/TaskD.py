@@ -25,7 +25,7 @@ def matpow(A, X):
     return result
 
 def solve():
-    
+    # Use readline so it processes as soon as you hit Enter
     line = sys.stdin.readline()
     if not line:
         return
@@ -33,12 +33,12 @@ def solve():
     T = int(line.strip())
     
     for _ in range(T):
-      
+        # Read the 4 matrix elements
         elements = sys.stdin.readline().split()
         if not elements: break
         a11, a12, a21, a22 = map(int, elements)
         
-       
+        # Read the power X
         X_line = sys.stdin.readline()
         if not X_line: break
         X = int(X_line.strip())
@@ -46,7 +46,7 @@ def solve():
         A = [[a11, a12], [a21, a22]]
         AX = matpow(A, X)
         
-        
+        # Print immediately for each case
         sys.stdout.write(f"{AX[0][0]} {AX[0][1]}\n{AX[1][0]} {AX[1][1]}\n")
 
 if __name__ == '__main__':
