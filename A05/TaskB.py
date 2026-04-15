@@ -1,6 +1,7 @@
 from collections import deque
 
 import sys 
+sys.setrecursionlimit(2*100000+5)
 
 input,output= sys.stdin.readline , sys.stdout.write
 
@@ -17,27 +18,20 @@ for i in range(edges):
 
 
 visited = [ False for _ in range(nodes+1) ]
-
+out=[]
 
 start_Node = 1
 
-queue = deque()
+def dfs(Graph ,u):
+    visited[u] = True
+    out.append(u)
 
-queue.append(start_Node)
+    for edges in Graph[u]:
+        if visited[edges] == False:
+            dfs(Graph , edges)
 
-visited[start_Node] = True
 
-out=[]
-
-while(len(queue)!=0):
-    node = queue.pop()
-
-    out.append(node)
-
-    for edge in graph[node]:
-        if(visited[edge] == False):
-            visited[edge] = True
-            queue.append(edge)
+dfs(graph , start_Node)
 
 output(" ".join(map(str,out)))
 
