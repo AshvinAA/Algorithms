@@ -10,8 +10,6 @@ nodes, edges , source, destination , mandatory=map(int, input().split())
 graph = [[] for _ in range(nodes+1)]
 
 if edges>0:
-    
-    
     for i in range(edges):
         u,v = map(int, input().split())
         graph[u].append(v)
