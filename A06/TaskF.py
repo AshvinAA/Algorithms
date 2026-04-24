@@ -1,4 +1,4 @@
-#Locksmith
+#Locksmith 
 
 import sys
 from collections import deque
@@ -23,7 +23,6 @@ def solve():
         print(0)
         return
     
-    # BFS
     queue = deque()
     queue.append((S, 0))
     visited = set()
@@ -32,7 +31,6 @@ def solve():
     while queue:
         combo, steps = queue.popleft()
         
-        # Try all 4 digits, increment and decrement
         for i in range(4):
             d = int(combo[i])
             for delta in (1, -1):
