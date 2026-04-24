@@ -1,6 +1,5 @@
 #Two Teams 
 
-
 import sys
 from collections import deque
 
